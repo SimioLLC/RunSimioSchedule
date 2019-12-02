@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RunSimioSchedule.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="EventFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\(test)\\RunSimioScheduleTest\\Event.csv</Value>
+    </Setting>
+    <Setting Name="StatusFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\(test)\\RunSimioScheduleTest\\RunStatus.txt</Value>
+    </Setting>
+    <Setting Name="SaveProject" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ClearStatusBeforeEachRun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DeleteStatusBeforeEachRun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SimioProjectFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\(test)\\RunSimioScheduleTest\\Model v92.0.spfx</Value>
+    </Setting>
+    <Setting Name="ExportScheduleFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\(test)\\RunSimioScheduleTest\\ExportSchedule.xml</Value>
+    </Setting>
+    <Setting Name="ModelName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Model</Value>
+    </Setting>
+    <Setting Name="RunPlan" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="RunRiskAnalysis" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ExportSchedule" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
