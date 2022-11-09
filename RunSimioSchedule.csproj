@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RunSimioSchedule</RootNamespace>
     <AssemblyName>RunSimioSchedule</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -49,16 +49,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SimioAPI">
-      <HintPath>C:\Program Files (x86)\Simio\SimioAPI.dll</HintPath>
+      <HintPath>C:\Program Files\Simio LLC\Simio\SimioAPI.dll</HintPath>
     </Reference>
     <Reference Include="SimioAPI.Extensions">
-      <HintPath>C:\Program Files (x86)\Simio\SimioAPI.Extensions.dll</HintPath>
+      <HintPath>C:\Program Files\Simio LLC\Simio\SimioAPI.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="SimioDLL">
-      <HintPath>C:\Program Files (x86)\Simio\SimioDLL.dll</HintPath>
+      <HintPath>C:\Program Files\Simio LLC\Simio\SimioDLL.dll</HintPath>
     </Reference>
     <Reference Include="SimioEnums">
-      <HintPath>C:\Program Files (x86)\Simio\SimioEnums.dll</HintPath>
+      <HintPath>C:\Program Files\Simio LLC\Simio\SimioEnums.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />

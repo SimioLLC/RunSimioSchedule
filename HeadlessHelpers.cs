@@ -158,7 +158,12 @@ namespace RunSimioSchedule
                     LogIt(marker = $"Run Plan?={runContext.RunPlan}");
                     if (runContext.RunPlan)
                     {
-                        model.Plan.RunPlan();
+                        RunPlanOptions options = new RunPlanOptions 
+                        {
+                            AllowDesignErrors = false
+                        };
+
+                        model.Plan.RunPlan(options);
                     }
 
                     LogIt(marker = $"Run Risk Analysis?={runContext.RunRiskAnalysis}");
