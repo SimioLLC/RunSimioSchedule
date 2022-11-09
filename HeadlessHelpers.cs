@@ -35,7 +35,7 @@ namespace RunSimioSchedule
         public string ExportScheduleFilepath { get; set; }
 
         /// <summary>
-        /// Where the extensions path is set to during the contructor.
+        /// Where the extensions path is set to during the constructor.
         /// </summary>
         public string ExtensionPath { get; private set; }
 
