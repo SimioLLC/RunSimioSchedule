@@ -30,6 +30,11 @@ namespace RunSimioSchedule
         public string EventFilepath { get; set; }
 
         /// <summary>
+        /// The full path to the status file
+        /// </summary>
+        public string StatusFilepath { get; set; }
+
+        /// <summary>
         /// Full path to the file containing the schedule export file.
         /// </summary>
         public string ExportScheduleFilepath { get; set; }
@@ -37,7 +42,7 @@ namespace RunSimioSchedule
         /// <summary>
         /// Where the extensions path is set to during the constructor.
         /// </summary>
-        public string ExtensionPath { get; private set; }
+        public string ExtensionsPath { get; private set; }
 
         public bool DeleteStatusBeforeRun { get; set; }
 
@@ -57,7 +62,12 @@ namespace RunSimioSchedule
         /// <param name="projectPath"></param>
         /// <param name="eventPath"></param>
         /// <param name="exportSchedulePath"></param>
-        public RunContext(string modelName, string projectPath, string eventPath, string exportSchedulePath)
+        /// <param name="statusFilepath"></param>
+        public RunContext(string modelName 
+            , string projectPath
+            , string eventPath
+            , string exportSchedulePath
+            , string statusFilepath )
         {
             string marker = "Begin.";
             try
@@ -66,12 +76,19 @@ namespace RunSimioSchedule
                 ProjectFilepath = projectPath;
                 EventFilepath = eventPath;
                 ExportScheduleFilepath = exportSchedulePath;
+                StatusFilepath = statusFilepath;
 
                 marker = $"RunContext Project={projectPath}. Model={ModelName}";
 
-                ExtensionPath = System.AppDomain.CurrentDomain.BaseDirectory;
-                marker = $"Setting ExtensionPath to={ExtensionPath}";
-                SimioProjectFactory.SetExtensionsPath(ExtensionPath);
+                string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+                this.ExtensionsPath = Path.Combine(programFiles, "Simio LLC", "Simio", "UserExtensions");
+                if ( Directory.Exists(ExtensionsPath) == false )
+                {
+                    throw new ApplicationException($"Could not locate ExtensionsPath={ExtensionsPath}");
+                }
+
+                marker = $"Setting ExtensionPath to={ExtensionsPath}";
+                SimioProjectFactory.SetExtensionsPath(ExtensionsPath);
 
                 // Set event file.
                 string eventFolder = Path.GetDirectoryName(EventFilepath);
@@ -139,7 +156,7 @@ namespace RunSimioSchedule
                     if (runContext.DeleteStatusBeforeRun)
                     {
                         LogIt(marker = $"Deleting Status before Run.");
-                        DeleteStatus();
+                        DeleteStatus(runContext);
                     }
 
                     if (exceptionsTable != null)
@@ -199,7 +216,13 @@ namespace RunSimioSchedule
 
 
         /// <summary>
-        /// Import a downtime table
+        /// Import a downtime table (WorkPeriodExceptions)
+        /// The format is determined by the properties of the WorkPeriodException RepeatingGroup
+        /// of the objects of this project (E.g. Cut1) which in turn have the properties:
+        /// * StartTime
+        /// * EndTime
+        /// * ExceptionType (e.g. Downtime)
+        /// * Description (can be blank)
         /// </summary>
         /// <param name="model"></param>
         /// <param name="exceptionsTable"></param>
@@ -208,14 +231,14 @@ namespace RunSimioSchedule
         {
             Int32 numberOfUpdates = 0;
 
-            var resorucesTable = model.Tables["Resources"];
-            if (resorucesTable == null)
+            var resourcesTable = model.Tables["Resources"];
+            if (resourcesTable == null)
             {
                 LogIt("Info: Resources table does not exist in model. Not used.");
                 return 0;
             }
 
-            foreach (var resourcesRow in resorucesTable.Rows)
+            foreach (var resourcesRow in resourcesTable.Rows)
             {
                 var intellObj = model.Facility.IntelligentObjects[resourcesRow.Properties["ResourceName"].Value];
 
@@ -241,7 +264,7 @@ namespace RunSimioSchedule
                                 } // for each data row
                             }
                         }
-                    } // for each propert
+                    } // for each property
                 }
             } // for each row
 
@@ -249,8 +272,8 @@ namespace RunSimioSchedule
         }
 
         /// <summary>
-        /// Read a text CSV (Comma Separated Value) file where the first row is column names
-        /// and return as a Microsoft DataTable
+        /// A generic read a text CSV (Comma Separated Value) file where the first row is column names
+        /// and return as a Microsoft DataTable. 
         /// </summary>
         /// <param name="fileNameAndPath"></param>
         /// <returns></returns>
@@ -335,14 +358,13 @@ namespace RunSimioSchedule
         }
 
         /// <summary>
-        /// Use the API to save the project
+        /// Use the SimEngine API to save the project
         /// </summary>
         private static void SaveProject(RunContext runContext)
         {
             try
             {
-                string[] warnings;
-                SimioProjectFactory.SaveProject(runContext.SimioProject, runContext.ProjectFilepath, out warnings);
+                SimioProjectFactory.SaveProject(runContext.SimioProject, runContext.ProjectFilepath, out string[] warnings);
                 if (warnings?.Count() > 0)
                     LogIt($"Warning: Project saved with {warnings?.Count()} warnings");
 
@@ -381,13 +403,16 @@ namespace RunSimioSchedule
             LogIt(msg, true);
         }
 
-        private static void DeleteStatus()
+        /// <summary>
+        /// Delete the Status file
+        /// </summary>
+        private static void DeleteStatus(RunContext rContext)
         {
             try
             {
-                if (System.IO.File.Exists(Properties.Settings.Default.StatusFile))
+                if ( File.Exists(rContext.StatusFilepath))
                 {
-                    File.Delete(Properties.Settings.Default.StatusFile);
+                    File.Delete(rContext.StatusFilepath);
                 }
             }
             catch { }
@@ -477,7 +502,8 @@ namespace RunSimioSchedule
         }
 
         /// <summary>
-        /// Convert a Simio Table to a Microsoft DataTable
+        /// Convert a Simio Table to a Microsoft DataTable.
+        /// Note: this is not used in this project but is left here as a reference.
         /// </summary>
         /// <param name="table"></param>
         /// <returns></returns>

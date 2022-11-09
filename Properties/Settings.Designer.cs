@@ -25,7 +25,7 @@ namespace RunSimioSchedule.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\(test)\\\\RunSimioScheduleTest\\\\Event.csv")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Event.csv")]
         public string EventFile {
             get {
                 return ((string)(this["EventFile"]));
@@ -37,7 +37,7 @@ namespace RunSimioSchedule.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\(test)\\\\RunSimioScheduleTest\\\\RunStatus.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("RunStatus.txt")]
         public string StatusFile {
             get {
                 return ((string)(this["StatusFile"]));
@@ -85,7 +85,7 @@ namespace RunSimioSchedule.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\(test)\\\\RunSimioScheduleTest\\\\Model v92.0.spfx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SchedulingDiscretePartProductionWithOnRunEndingExport.spfx")]
         public string SimioProjectFile {
             get {
                 return ((string)(this["SimioProjectFile"]));
@@ -97,7 +97,7 @@ namespace RunSimioSchedule.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\(test)\\\\RunSimioScheduleTest\\\\ExportSchedule.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ExportSchedule.xml")]
         public string ExportScheduleFile {
             get {
                 return ((string)(this["ExportScheduleFile"]));
@@ -152,6 +152,18 @@ namespace RunSimioSchedule.Properties {
             }
             set {
                 this["ExportSchedule"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\\\temp\\\\RunSimioScheduleTest")]
+        public string RootFolder {
+            get {
+                return ((string)(this["RootFolder"]));
+            }
+            set {
+                this["RootFolder"] = value;
             }
         }
     }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Data;
 using System.ServiceProcess;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Configuration.Install;
@@ -27,16 +28,33 @@ namespace RunSimioSchedule
 
         static void Main(string[] args)
         {
+            string rootFolder = Properties.Settings.Default.RootFolder;
+            // Quick check
+            if (!Directory.Exists(rootFolder))
+            {
+                throw new ApplicationException($"Fatal error: No Root Folder found={rootFolder}");
+            }
+
+            // Create the In, Out, and Data SubRoot folders
+            string inRoot = Path.Combine(rootFolder, "In");
+            if (!Directory.Exists(inRoot))
+                Directory.CreateDirectory(inRoot);
+
+            string outRoot = Path.Combine(rootFolder, "Out");
+            if (!Directory.Exists(outRoot))
+                Directory.CreateDirectory(outRoot);
+
             string modelName = Properties.Settings.Default.ModelName;
-            string projectPath = Properties.Settings.Default.SimioProjectFile;
-            string eventPath = Properties.Settings.Default.EventFile;
-            string exportSchedulePath = Properties.Settings.Default.ExportScheduleFile;
+            string projectPath = Path.Combine(rootFolder, Properties.Settings.Default.SimioProjectFile);
+            string eventPath = Path.Combine(inRoot, Properties.Settings.Default.EventFile);
+            string exportSchedulePath = Path.Combine(outRoot, Properties.Settings.Default.ExportScheduleFile);
+            string statusFilepath = Path.Combine(rootFolder, Properties.Settings.Default.StatusFile);
 
             // Create the run context
-            RContext = new RunContext(modelName, projectPath, eventPath, exportSchedulePath);
+            RContext = new RunContext(modelName, projectPath, eventPath, exportSchedulePath, statusFilepath);
 
             LogIt($"Project={projectPath}");
-            LogIt($"ExtensionsPath={RContext.ExtensionPath}");
+            LogIt($"ExtensionsPath={RContext.ExtensionsPath}");
 
             RContext.DeleteStatusBeforeRun = Properties.Settings.Default.DeleteStatusBeforeEachRun;
             RContext.SaveProject = Properties.Settings.Default.SaveProject;
@@ -61,6 +79,7 @@ namespace RunSimioSchedule
                     Console.WriteLine("Hit any key to stop...");
                     do
                     {
+                        System.Threading.Thread.Sleep(50);
                     } while (Console.ReadLine() != "q");
 
                     service.OnStop();
@@ -75,13 +94,11 @@ namespace RunSimioSchedule
         /// <param name="args"></param>
         protected override void OnStart(string[] args)
         {
-            string marker = "Begin";
-
             try
             {
                 ShutdownHost();
 
-                // Belts and suspenders. Set up a timer to watch for event (never trust the FileWatcher)
+                // Belts and suspenders. Set up a timer to watch for event (i.e. never trust a FileWatcher)
                 System.Timers.Timer CheckTimer = new System.Timers.Timer();
                 CheckTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
                 CheckTimer.Interval = 5000;
@@ -130,7 +147,7 @@ namespace RunSimioSchedule
 
 
         /// <summary>
-        /// See if the event file is presenty and - if  so - run the model.
+        /// See if the event file is present and - if  so - run the model.
         /// We lock it to prevent the timer and fileWatcher from interfering with each other.
         /// </summary>
         /// <param name="caller"></param>

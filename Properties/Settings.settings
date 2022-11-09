@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="EventFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\(test)\\RunSimioScheduleTest\\Event.csv</Value>
+      <Value Profile="(Default)">Event.csv</Value>
     </Setting>
     <Setting Name="StatusFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\(test)\\RunSimioScheduleTest\\RunStatus.txt</Value>
+      <Value Profile="(Default)">RunStatus.txt</Value>
     </Setting>
     <Setting Name="SaveProject" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -18,10 +18,10 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="SimioProjectFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\(test)\\RunSimioScheduleTest\\Model v92.0.spfx</Value>
+      <Value Profile="(Default)">SchedulingDiscretePartProductionWithOnRunEndingExport.spfx</Value>
     </Setting>
     <Setting Name="ExportScheduleFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\(test)\\RunSimioScheduleTest\\ExportSchedule.xml</Value>
+      <Value Profile="(Default)">ExportSchedule.xml</Value>
     </Setting>
     <Setting Name="ModelName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Model</Value>
@@ -34,6 +34,9 @@
     </Setting>
     <Setting Name="ExportSchedule" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RootFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\\temp\\RunSimioScheduleTest</Value>
     </Setting>
   </Settings>
 </SettingsFile>
