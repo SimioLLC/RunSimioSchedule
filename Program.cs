@@ -183,7 +183,7 @@ namespace RunSimioSchedule
         {
             try
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(Properties.Settings.Default.StatusFile, append))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(RContext.StatusFilepath, append))
                 {
                     string timestamp = System.DateTime.Now.ToString("ddMMMyy HH:mm:ss");
                     msg = $"{timestamp}: {msg}";
