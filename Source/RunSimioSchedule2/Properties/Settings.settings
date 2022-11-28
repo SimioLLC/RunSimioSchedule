@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RunSimioSchedule2.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RootFolderpath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\\temp\\RunSimioSchedule2Test</Value>
+    </Setting>
+    <Setting Name="StatusFilepath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\\temp\RunSimioSchedule2Test\Status.txt</Value>
+    </Setting>
+    <Setting Name="ModelName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Model</Value>
+    </Setting>
+    <Setting Name="IsPlanToBeRun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IsRiskAnalysisToBeRun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="IsProjectToBeSaved" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IsExperimentToBeRun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ExperimentName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Experiment2</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

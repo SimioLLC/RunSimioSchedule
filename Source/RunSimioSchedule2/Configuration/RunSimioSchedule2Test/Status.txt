@@ -1,0 +1,179 @@
+2022-11-20 (Nov) 07:30:41: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+2022-11-20 (Nov) 07:30:41: ShutdownHost called.
+2022-11-20 (Nov) 07:30:41: Setting up FileWatcher
+2022-11-20 (Nov) 07:30:48: Calling RunSchedule From=Created. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx
+2022-11-20 (Nov) 07:30:48: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx to 'Processed'
+2022-11-20 (Nov) 07:30:51: Looking for Model=Model
+2022-11-20 (Nov) 07:30:51: Run Plan? (True)
+2022-11-20 (Nov) 07:30:51: Running Plan...
+2022-11-20 (Nov) 07:30:53: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 07:30:53: Run Plan completed.
+2022-11-20 (Nov) 07:30:53: Run Experiment? (False)
+2022-11-20 (Nov) 07:30:53: Actions Complete. Optional Save. (True)
+2022-11-20 (Nov) 07:30:53: Saving Project (with all Results)
+2022-11-20 (Nov) 07:30:53: Info: Project Saved.
+2022-11-20 (Nov) 07:30:53: Marker=Saving Project (with all Results) Err=System.ApplicationException: Source=c:\\temp\\RunSimioSchedule2Test\Processing\SchedulingTest1.spfx TargetFolder=c:\\temp\\RunSimioSchedule2Test\Success, Err=Could not find file 'c:\temp\RunSimioSchedule2Test\Processing\SchedulingTest1.spfx'.
+   at RunSimioSchedule2.HeadlessHelpers.MoveFileToNewFolder(String sourceFilepath, String newFolderpath) in D:\GitHub\RunSimioSchedule\Source\RunSimioSchedule2\HeadlessHelpers.cs:line 203
+   at RunSimioSchedule2.HeadlessHelpers.RunScheduleAndSaveProject(RunContext runContext, String foundFilepath) in D:\GitHub\RunSimioSchedule\Source\RunSimioSchedule2\HeadlessHelpers.cs:line 163
+2022-11-20 (Nov) 07:33:44: Calling RunSchedule From=Created. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx
+2022-11-20 (Nov) 07:33:44: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx to 'Processed'
+2022-11-20 (Nov) 07:33:45: Looking for Model=Model
+2022-11-20 (Nov) 07:33:45: Run Plan? (True)
+2022-11-20 (Nov) 07:33:45: Running Plan...
+2022-11-20 (Nov) 07:33:45: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 07:33:45: Run Plan completed.
+2022-11-20 (Nov) 07:33:45: Run Experiment? (False)
+2022-11-20 (Nov) 07:33:45: Actions Complete. Optional Save. (True)
+2022-11-20 (Nov) 07:33:45: Saving Project (with all Results)
+2022-11-20 (Nov) 07:33:45: Info: Project Saved.
+2022-11-20 (Nov) 07:33:45: Marker=Saving Project (with all Results) Err=System.ApplicationException: Source=c:\\temp\\RunSimioSchedule2Test\Processing\SchedulingTest1.spfx TargetFolder=c:\\temp\\RunSimioSchedule2Test\Success, Err=Could not find file 'c:\temp\RunSimioSchedule2Test\Processing\SchedulingTest1.spfx'.
+   at RunSimioSchedule2.HeadlessHelpers.MoveFileToNewFolder(String sourceFilepath, String newFolderpath) in D:\GitHub\RunSimioSchedule\Source\RunSimioSchedule2\HeadlessHelpers.cs:line 203
+   at RunSimioSchedule2.HeadlessHelpers.RunScheduleAndSaveProject(RunContext runContext, String foundFilepath) in D:\GitHub\RunSimioSchedule\Source\RunSimioSchedule2\HeadlessHelpers.cs:line 163
+2022-11-20 (Nov) 07:34:09: Calling RunSchedule From=Created. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest2.spfx
+2022-11-20 (Nov) 07:34:09: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest2.spfx to 'Processed'
+2022-11-20 (Nov) 07:34:10: Looking for Model=Model
+2022-11-20 (Nov) 07:34:10: Run Plan? (True)
+2022-11-20 (Nov) 07:34:10: Running Plan...
+2022-11-20 (Nov) 07:34:11: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 07:34:11: Run Plan completed.
+2022-11-20 (Nov) 07:34:11: Run Experiment? (False)
+2022-11-20 (Nov) 07:34:11: Actions Complete. Optional Save. (True)
+2022-11-20 (Nov) 07:34:11: Saving Project (with all Results)
+2022-11-20 (Nov) 07:34:11: Info: Project Saved.
+2022-11-20 (Nov) 07:34:11: Marker=Saving Project (with all Results) Err=System.ApplicationException: Source=c:\\temp\\RunSimioSchedule2Test\Processing\SchedulingTest2.spfx TargetFolder=c:\\temp\\RunSimioSchedule2Test\Success, Err=Could not find file 'c:\temp\RunSimioSchedule2Test\Processing\SchedulingTest2.spfx'.
+   at RunSimioSchedule2.HeadlessHelpers.MoveFileToNewFolder(String sourceFilepath, String newFolderpath) in D:\GitHub\RunSimioSchedule\Source\RunSimioSchedule2\HeadlessHelpers.cs:line 203
+   at RunSimioSchedule2.HeadlessHelpers.RunScheduleAndSaveProject(RunContext runContext, String foundFilepath) in D:\GitHub\RunSimioSchedule\Source\RunSimioSchedule2\HeadlessHelpers.cs:line 163
+2022-11-20 (Nov) 07:39:33: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+2022-11-20 (Nov) 07:39:33: ShutdownHost called.
+2022-11-20 (Nov) 07:39:33: Setting up FileWatcher
+2022-11-20 (Nov) 07:39:38: Calling RunSchedule From=Timer. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx
+2022-11-20 (Nov) 07:39:38: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx to 'Processed'
+2022-11-20 (Nov) 07:39:41: Looking for Model=Model
+2022-11-20 (Nov) 07:39:41: Run Plan? (True)
+2022-11-20 (Nov) 07:39:41: Running Plan...
+2022-11-20 (Nov) 07:39:43: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 07:39:43: Run Plan completed.
+2022-11-20 (Nov) 07:39:43: Run Experiment? (False)
+2022-11-20 (Nov) 07:39:43: Actions Complete. Optional Save. (True)
+2022-11-20 (Nov) 07:39:43: Saving Project (with all Results)
+2022-11-20 (Nov) 07:39:43: Info: Project Saved.
+2022-11-20 (Nov) 07:41:26: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+2022-11-20 (Nov) 07:41:26: ShutdownHost called.
+2022-11-20 (Nov) 07:41:26: Setting up FileWatcher
+2022-11-20 (Nov) 07:41:31: Calling RunSchedule From=Timer. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx
+2022-11-20 (Nov) 07:41:31: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx to 'Processed'
+2022-11-20 (Nov) 07:41:35: Looking for Model=Model
+2022-11-20 (Nov) 07:41:35: Run Plan? (True)
+2022-11-20 (Nov) 07:41:35: Running Plan...
+2022-11-20 (Nov) 07:41:36: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 07:41:36: Run Plan completed.
+2022-11-20 (Nov) 07:41:36: Run Experiment? (False)
+2022-11-20 (Nov) 07:41:36: Actions Complete. Optional Save. (True)
+2022-11-20 (Nov) 07:41:36: Saving Project (with all Results)
+2022-11-20 (Nov) 07:41:36: Info: Project Saved.
+2022-11-20 (Nov) 07:44:56: Calling RunSchedule From=Created. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx
+2022-11-20 (Nov) 07:44:56: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx to 'Processed'
+2022-11-20 (Nov) 07:44:57: Looking for Model=Model
+2022-11-20 (Nov) 07:44:57: Run Plan? (True)
+2022-11-20 (Nov) 07:44:57: Running Plan...
+2022-11-20 (Nov) 07:44:57: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 07:44:57: Run Plan completed.
+2022-11-20 (Nov) 07:44:57: Run Experiment? (False)
+2022-11-20 (Nov) 07:45:02: Actions Complete. Optional Save. (True)
+2022-11-20 (Nov) 07:45:05: Saving Project (with all Results)
+2022-11-20 (Nov) 07:49:17: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+2022-11-20 (Nov) 07:49:17: ShutdownHost called.
+2022-11-20 (Nov) 07:49:17: Setting up FileWatcher
+2022-11-20 (Nov) 07:49:17: Calling RunSchedule From=Created. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx
+2022-11-20 (Nov) 07:49:17: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx to 'Processed'
+2022-11-20 (Nov) 07:49:20: Looking for Model=Model
+2022-11-20 (Nov) 07:49:20: Run Plan? (True)
+2022-11-20 (Nov) 07:49:20: Running Plan...
+2022-11-20 (Nov) 07:49:22: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 07:49:22: Run Plan completed.
+2022-11-20 (Nov) 07:49:22: Run Experiment? (False)
+2022-11-20 (Nov) 07:49:27: Actions Complete. Optional Save. (True)
+2022-11-20 (Nov) 07:49:31: Saving Project (with all Results)
+2022-11-20 (Nov) 07:49:32: Info: Project saving to=c:\\temp\\RunSimioSchedule2Test\Processing\SchedulingTest1.spfx...
+2022-11-20 (Nov) 07:49:37: Info: Project Saved.
+2022-11-20 (Nov) 07:51:07: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+2022-11-20 (Nov) 07:51:07: ShutdownHost called.
+2022-11-20 (Nov) 07:51:07: Setting up FileWatcher
+2022-11-20 (Nov) 07:52:01: Calling RunSchedule From=Created. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx
+2022-11-20 (Nov) 07:52:01: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx to 'Processed'
+2022-11-20 (Nov) 07:52:04: Looking for Model=Model
+2022-11-20 (Nov) 07:52:04: Run Plan? (True)
+2022-11-20 (Nov) 07:52:04: Running Plan...
+2022-11-20 (Nov) 07:52:05: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 07:52:05: Run Plan completed.
+2022-11-20 (Nov) 07:52:05: Run Experiment? (False)
+2022-11-20 (Nov) 07:52:05: Actions Complete. Optional Save. (True)
+2022-11-20 (Nov) 07:52:05: Saving Project (with all Results)
+2022-11-20 (Nov) 07:52:05: Info: Project saving to=c:\\temp\\RunSimioSchedule2Test\Processing\SchedulingTest1.spfx...
+2022-11-20 (Nov) 07:52:06: Info: Project Saved.
+2022-11-20 (Nov) 07:54:24: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+2022-11-20 (Nov) 07:54:24: ShutdownHost called.
+2022-11-20 (Nov) 07:54:24: Setting up FileWatcher
+2022-11-20 (Nov) 07:54:42: Calling RunSchedule From=Created. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx
+2022-11-20 (Nov) 07:54:42: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx to 'Processed'
+2022-11-20 (Nov) 07:54:45: Looking for Model=Model
+2022-11-20 (Nov) 07:54:45: Run Plan? (True)
+2022-11-20 (Nov) 07:54:45: Running Plan...
+2022-11-20 (Nov) 07:54:46: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 07:54:46: Run Plan completed.
+2022-11-20 (Nov) 07:54:46: Run Experiment? (False)
+2022-11-20 (Nov) 07:55:28: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+2022-11-20 (Nov) 07:56:51: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+2022-11-20 (Nov) 07:56:58: ShutdownHost called.
+2022-11-20 (Nov) 07:56:58: Setting up FileWatcher
+2022-11-20 (Nov) 07:57:08: Calling RunSchedule From=Created. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx
+2022-11-20 (Nov) 07:57:08: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx to 'Processed'
+2022-11-20 (Nov) 07:57:11: Looking for Model=Model
+2022-11-20 (Nov) 07:57:11: Run Plan? (True)
+2022-11-20 (Nov) 07:57:11: Running Plan...
+2022-11-20 (Nov) 07:57:12: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 07:57:12: Run Plan completed.
+2022-11-20 (Nov) 07:57:12: Run Experiment? (True)
+2022-11-20 (Nov) 07:57:28: Looking within Model=Model for Experiment=Experiment1
+2022-11-20 (Nov) 07:57:34: Experiment Completed. 
+2022-11-20 (Nov) 07:57:37: Actions Complete. Optional Save. (True)
+2022-11-20 (Nov) 07:57:37: Saving Project (with all Results)
+2022-11-20 (Nov) 07:57:37: Info: Project saving to=c:\\temp\\RunSimioSchedule2Test\Processing\SchedulingTest1.spfx...
+2022-11-20 (Nov) 07:57:38: Info: Project Saved.
+2022-11-20 (Nov) 09:31:48: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+2022-11-20 (Nov) 09:32:02: ShutdownHost called.
+2022-11-20 (Nov) 09:32:02: Setting up FileWatcher
+2022-11-20 (Nov) 09:32:07: Calling RunSchedule From=Timer. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx
+2022-11-20 (Nov) 09:32:07: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx to 'Processed'
+2022-11-20 (Nov) 09:32:10: Looking for Model=Model
+2022-11-20 (Nov) 09:32:10: Run Plan? (True)
+2022-11-20 (Nov) 09:32:10: Running Plan...
+2022-11-20 (Nov) 09:32:11: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 09:32:11: Run Plan completed.
+2022-11-20 (Nov) 09:32:11: Run Experiment? (True)
+2022-11-20 (Nov) 09:32:17: Looking within Model=Model for Experiment=Experiment2
+2022-11-20 (Nov) 09:32:18: Experiment=Experiment2 Not Found In Model=Model
+2022-11-20 (Nov) 09:32:21: Actions Complete. Optional Save. (True)
+2022-11-20 (Nov) 09:32:21: Saving Project (with all Results)
+2022-11-20 (Nov) 09:32:21: Info: Project saving to=c:\\temp\\RunSimioSchedule2Test\Processing\SchedulingTest1.spfx...
+2022-11-20 (Nov) 09:32:21: Info: Project Saved.
+2022-11-20 (Nov) 09:33:25: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+2022-11-20 (Nov) 09:33:25: ShutdownHost called.
+2022-11-20 (Nov) 09:33:25: Setting up FileWatcher
+2022-11-20 (Nov) 09:33:30: Calling RunSchedule From=Timer. Found file=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx
+2022-11-20 (Nov) 09:33:30: Move the found project File=c:\\temp\\RunSimioSchedule2Test\In\SchedulingTest1.spfx to 'Processed'
+2022-11-20 (Nov) 09:33:33: Looking for Model=Model
+2022-11-20 (Nov) 09:33:33: Run Plan? (True)
+2022-11-20 (Nov) 09:33:33: Running Plan...
+2022-11-20 (Nov) 09:33:35: Run Completed. Optional Risk Analysis (False)
+2022-11-20 (Nov) 09:33:35: Run Plan completed.
+2022-11-20 (Nov) 09:33:35: Run Experiment? (True)
+2022-11-20 (Nov) 09:33:39: Looking within Model=Model for Experiment=Experiment2
+2022-11-20 (Nov) 09:33:39: Experiment=Experiment2 Not Found In Model=Model
+2022-11-20 (Nov) 09:33:39: Actions Complete. Optional Save. (True)
+2022-11-20 (Nov) 09:33:39: Saving Project (with all Results)
+2022-11-20 (Nov) 09:33:39: Info: Project saving to=c:\\temp\\RunSimioSchedule2Test\Processing\SchedulingTest1.spfx...
+2022-11-20 (Nov) 09:33:40: Info: Project Saved.
+2022-11-28 (Nov) 13:41:24: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+2022-11-28 (Nov) 13:41:24: ShutdownHost called.
+2022-11-28 (Nov) 13:41:24: Setting up FileWatcher

@@ -1,0 +1,31 @@
+09Nov22 18:54:20: Project=c:\\temp\\RunSimioScheduleTest\SchedulingDiscretePartProductionWithOnRunEndingExport.spfx
+09Nov22 18:54:25: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+09Nov22 18:54:25: ShutdownHost called.
+09Nov22 18:54:25: Setting up FileWatcher
+09Nov22 18:55:11: Calling RunSchedule From=Created. Found file=c:\\temp\\RunSimioScheduleTest\In\Event.csv
+16Nov22 06:51:24: Project=c:\\temp\\RunSimioScheduleTest\SchedulingDiscretePartProductionWithOnRunEndingExport.spfx
+16Nov22 06:51:25: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+16Nov22 06:51:51: ShutdownHost called.
+16Nov22 06:51:51: Setting up FileWatcher
+16Nov22 06:54:50: Project=c:\\temp\\RunSimioScheduleTest\SchedulingDiscretePartProductionWithOnRunEndingExport.spfx
+16Nov22 06:54:50: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+16Nov22 06:55:04: ShutdownHost called.
+16Nov22 06:55:04: Setting up FileWatcher
+16Nov22 06:55:09: Calling RunSchedule From=Timer. Found file=c:\\temp\\RunSimioScheduleTest\In\Event.csv
+16Nov22 12:22:10: Project=c:\\temp\\RunSimioScheduleTest\SchedulingTest1.spfx
+16Nov22 12:22:10: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+16Nov22 12:22:38: ShutdownHost called.
+16Nov22 12:22:38: Setting up FileWatcher
+16Nov22 12:22:44: Calling RunSchedule From=Timer. Found file=c:\\temp\\RunSimioScheduleTest\In\Event.csv
+21Nov22 07:08:38: Project=c:\\temp\\RunSimioScheduleTest\SchedulingTest1.spfx
+21Nov22 07:08:38: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+21Nov22 07:08:38: ShutdownHost called.
+21Nov22 07:08:38: Setting up FileWatcher
+28Nov22 13:39:12: Project=c:\\temp\\RunSimioScheduleTest\SchedulingTest1.spfx
+28Nov22 13:39:12: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+28Nov22 13:39:12: ShutdownHost called.
+28Nov22 13:39:12: Setting up FileWatcher
+28Nov22 13:40:01: Project=c:\\temp\\RunSimioScheduleTest\SchedulingTest1.spfx
+28Nov22 13:40:01: ExtensionsPath=C:\Program Files\Simio LLC\Simio\UserExtensions
+28Nov22 13:40:01: ShutdownHost called.
+28Nov22 13:40:01: Setting up FileWatcher
