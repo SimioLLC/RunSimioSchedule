@@ -7,5 +7,9 @@ The second example (RunSimioSchedule2) instead watches the IN folder for a Simio
 
 The Settings file is a standard VisualStudio artifact that can be seen in the code and is distributed with the executable file (for example, see \bin\Release\RunSimioSchedule.exe.config).
 
+Under the Source folder are the two projects, and under each of these is a Configuration folder with a single folder (e.g. RunSimioSchedule2). You can take this and place it under the root folder defined in the project's Settings file (e.g. c:\temp).
+
+Note that these code samples reference the Simio Engine from where it is installed for the desktop version: e.g. c:\program files\Simio LLC\simio. If you wish to run it elsewhere, you need to move the DLLs, including all of their dependencies and the licensing DLLs.
+
 Look to the Documentation folder contains detailed documentation.
 
