@@ -1,0 +1,192 @@
+﻿using SimioAPI;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace RunBarebones
+{
+    /// <summary>
+    /// The simplest of runs with no fluff, to get you up and running with a known solution.
+    /// Also, it deviates from good programming practices (such as modularity) to show all
+    /// the logic in-line in a single method.
+    /// 
+    /// Install the desktop to your computer (e.g. c:\program files\Simio LLC\Simio
+    /// Create a run root folder (say, c:\temp\SimioProjects\245 - 245 is the Simio version in this example).
+    /// Get two sample projects from the desktop examples folder (e.g. c:\program files\Simio LLC\Simio):
+    ///    1. HospitalEmergencyDepartment - for running an Experiment
+    ///    2. SchedulingDiscretePartProduction - for running a Plan
+    ///   
+    /// The following code will run an Experiment from the first, and a Plan from the second
+    /// The model "Model" is first located
+    /// and then the experiment is Reset and then Run, or the Plan is Reset and then Run.
+    /// The project is saved back to a file appended with "Saved"
+    /// You can then open the project file from Simio desktop to see the results.
+    /// </summary>
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // This project is used to test various versions of Simio.
+            // To do this, there is the "simioVersion" that corresponds to a folder on a temporary
+            // path that holds our example projects.
+            // Note: this "version" must correspond to the SimioAPI and SimioDLL references that
+            // the project is built with (see the Solution Explorer)
+            string simioVersion = "245";
+            string rootPath = $@"c:\temp\SimioProjects\{simioVersion}\";
+
+            //========== Do an Experiment ===============
+            string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            string extensionsFolderpath = Path.Combine(programFiles, "Simio LLC", $"Simio {simioVersion}", "UserExtensions");
+            SimioProjectFactory.SetExtensionsPath(extensionsFolderpath);
+
+            string projectName = "HospitalEmergencyDepartment";
+            string loadPath = Path.Combine(rootPath, $"{projectName}.spfx");
+            if ( !File.Exists(loadPath) ) 
+            {
+                Logit($"Project Path={loadPath} does not exist. Exiting...");
+                Environment.Exit(-1);
+            }
+
+            Logit($"Info: Project={loadPath} exists.");
+            ISimioProject projectExperiment = SimioProjectFactory.LoadProject(loadPath, out string[] loadWarnings);
+            if (loadWarnings?.Length > 0)
+            {
+                int count = 0;
+                foreach (var warning in loadWarnings)
+                {
+                    Logit($"Warning: Load Warning #{++count}={warning}");
+                }
+            }
+
+            string modelName = "Model";
+            IModel model = projectExperiment.Models[modelName];
+
+            if ( model != null )
+            {
+                Logit($"Info: Located model={modelName}. Using the first Experiment.");
+
+                IExperiment experiment = model.Experiments[0]; // get the first experiment
+                if (experiment != null)
+                {
+                    try
+                    {
+                        Logit($"Info: Experiment={experiment.Name} resetting..");
+                        experiment.Reset();
+                        Logit($"Info: Experiment={experiment.Name} starting run...");
+                        experiment.Run();
+                        Logit($"Info: Experiment={experiment.Name} finished run.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Logit($"Experiment={experiment.Name} failed. Error={ex.Message}");
+                    }
+                }
+                else
+                    Logit($"Could not locate an Experiment");
+            }
+            else
+            {
+                Logit($"Could not located model={modelName}");
+            }
+
+
+            string savePath = Path.Combine(rootPath, $"{projectName}-Saved.spfx");
+            Logit($"Info: Saving project to={savePath}...");
+            SimioProjectFactory.SaveProject(projectExperiment, savePath, out string[] saveWarnings);
+            if ( saveWarnings?.Length > 0)
+            {
+                int count = 0;
+                foreach ( var warning in saveWarnings )
+                {
+                    Logit($"Save Warning #{++count}={warning}");
+                }
+            }
+            Logit($"Info: Project (with Experiment) saved to={savePath}.");
+
+            //========== Now do a Plan ===============
+
+            projectName = "SchedulingDiscretePartProduction";
+            loadPath = Path.Combine(rootPath, $"{projectName}.spfx");
+            if (!File.Exists(loadPath))
+            {
+                Logit($"Project={loadPath} does not exist. Exiting...");
+                Environment.Exit(-1);
+            }
+
+            programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            extensionsFolderpath = Path.Combine(programFiles, "Simio LLC", $"Simio {simioVersion}", "UserExtensions"); 
+            SimioProjectFactory.SetExtensionsPath(extensionsFolderpath);
+
+            Logit($"Info: Project={loadPath} exists.");
+            ISimioProject projectPlan = SimioProjectFactory.LoadProject(loadPath, out loadWarnings);
+            if (loadWarnings?.Length > 0)
+            {
+                int count = 0;
+                foreach (var warning in loadWarnings)
+                {
+                    Logit($"Warning: Load Warning #{++count}={warning}");
+                }
+            }
+
+            modelName = "Model";
+            model = projectPlan.Models[modelName];
+
+            if (model != null)
+            {
+                Logit($"Info: Located model={modelName}. Using the first Experiment.");
+
+                IPlan plan = model.Plan; // get the plan
+                if (plan != null)
+                {
+                    try
+                    {
+                        Logit($"Info: Plan starting run...");
+                        RunPlanOptions runOptions = new RunPlanOptions();
+                        runOptions.AllowDesignErrors = false;
+                        plan.RunPlan(runOptions);
+                        Logit($"Info: Plan finished run.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Logit($"Plan={plan} Error={ex.Message}");
+                    }
+                }
+                else
+                    Logit($"Could not locate a Plan");
+            }
+            else
+            {
+                Logit($"Could not locate model={modelName}");
+            }
+
+            savePath = Path.Combine(rootPath, $"{projectName}-Saved.spfx");
+            Logit($"Info: Saving project to={savePath}...");
+            SimioProjectFactory.SaveProject(projectPlan, savePath, out saveWarnings);
+            if (saveWarnings?.Length > 0)
+            {
+                int count = 0;
+                foreach (var warning in saveWarnings)
+                {
+                    Logit($"Save Warning #{++count}={warning}");
+                }
+            }
+            Logit($"Info: Project (with Plan) saved to={savePath}.");
+
+
+        } // main
+
+        /// <summary>
+        /// Put out to console with timestamp
+        /// </summary>
+        /// <param name="messsage"></param>
+        /// <returns></returns>
+        private static void Logit(string messsage)
+        {
+            Console.WriteLine($"{DateTime.Now:HH:mm:ss.fff}: {messsage}");
+        }
+    } // class Program
+}

@@ -12,6 +12,11 @@ namespace RunSimioSchedule2
         public ISimioProject SimioProject { get; set; }
 
         /// <summary>
+        /// The name of the project file.
+        /// </summary>
+        public string ProjectFilename { get; set; }
+
+        /// <summary>
         /// This model name is looked for in each dropped project
         /// </summary>
         public string ModelName { get; set; } = null;
@@ -22,10 +27,42 @@ namespace RunSimioSchedule2
         /// </summary>
         public string ExperimentName { get; set; } = null;
 
+
         /// <summary>
-        /// Full path to project (e.g. spfx) file
+        /// Full path to project (e.g. spfx) file while processing
         /// </summary>
-        public string ProjectFilepath { get; set; }
+        public string ProcessingFilepath
+        {
+            get
+            {
+                string fullpath = Path.Combine(ProcessingFolderpath, ProjectFilename);
+                return fullpath;
+            }
+        }
+
+        /// <summary>
+        /// Full path to project (e.g. spfx) file while processing
+        /// </summary>
+        public string SuccessFilepath
+        {
+            get
+            {
+                string fullpath = Path.Combine(SuccessFolderpath, ProjectFilename);
+                return fullpath;
+            }
+        }
+
+        /// <summary>
+        /// Full path to project (e.g. spfx) file while processing
+        /// </summary>
+        public string ErrorFilepath
+        {
+            get
+            {
+                string fullpath = Path.Combine(ErrorFolderpath, ProjectFilename);
+                return fullpath;
+            }
+        }
 
         /// <summary>
         /// Folder monitored by System.FileWatcher
@@ -136,7 +173,7 @@ namespace RunSimioSchedule2
                 }
 
                 marker = $"Setting ExtensionPath to={ExtensionsFolderpath}";
-                SimioProjectFactory.SetExtensionsPath(ExtensionsFolderpath);
+                //SimioProjectFactory.SetExtensionsPath(ExtensionsFolderpath);
 
             }
             catch (Exception ex)

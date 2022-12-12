@@ -25,7 +25,7 @@ namespace RunSimioSchedule2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\\\temp\\\\RunSimioSchedule2Test")]
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\temp\\RunSimioSchedule2Test")]
         public string RootFolderpath {
             get {
                 return ((string)(this["RootFolderpath"]));
@@ -37,7 +37,7 @@ namespace RunSimioSchedule2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\\\temp\\RunSimioSchedule2Test\\Status.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\temp\\RunSimioSchedule2Test\\Status.txt")]
         public string StatusFilepath {
             get {
                 return ((string)(this["StatusFilepath"]));
@@ -109,7 +109,7 @@ namespace RunSimioSchedule2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Experiment2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Experiment1")]
         public string ExperimentName {
             get {
                 return ((string)(this["ExperimentName"]));

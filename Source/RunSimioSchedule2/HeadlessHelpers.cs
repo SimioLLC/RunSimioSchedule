@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RunSimioSchedule2
 {
@@ -33,15 +31,17 @@ namespace RunSimioSchedule2
 
             try
             {
+                runContext.ProjectFilename = Path.GetFileName(incomingFilepath);
+
                 HeadlessHelpers.MoveFileToNewFolder( incomingFilepath, runContext.ProcessingFolderpath);
 
                 bool isFaulted = true; // default
 
                 // Open project file and pay attention to any warnings.
-                runContext.SimioProject = SimioProjectFactory.LoadProject(runContext.ProjectFilepath, out string[] warnings);
+                runContext.SimioProject = SimioProjectFactory.LoadProject(runContext.ProcessingFilepath, out string[] warnings);
                 if (warnings.Length > 0)
                 {
-                    LogIt($"Loaded={runContext.ProjectFilepath} but with {warnings.Length} warnings:");
+                    LogIt($"Loaded={runContext.ProcessingFilepath} but with {warnings.Length} warnings:");
                     int ii = 0;
                     foreach (string warning in warnings)
                     {
@@ -116,6 +116,7 @@ namespace RunSimioSchedule2
                                 else // found Experiment
                                 {
                                     // Run is synchronously
+                                    LogIt(marker = $"Ready to Reset and Run Experiment={experimentName} of Model={modelName} ");
                                     experiment.Reset();
                                     experiment.Run();
 
@@ -138,7 +139,7 @@ namespace RunSimioSchedule2
                     }
                     catch (Exception ex)
                     {
-                        LogIt($"Project={runContext.ProjectFilepath}. Marker={marker}. Error={ex.Message}");
+                        LogIt($"Project={runContext.ProcessingFilepath}. Marker={marker}. Error={ex.Message}");
                     }
 
                 } // load was ok
@@ -146,11 +147,11 @@ namespace RunSimioSchedule2
                 // Oops. Something went wrong. Move the project file to the error folder.
                 if (isFaulted)
                 {
-                    MoveFileToNewFolder(runContext.ProjectFilepath, runContext.ErrorFolderpath);
+                    MoveFileToNewFolder(runContext.ProcessingFilepath, runContext.ErrorFolderpath);
                 }
                 else // Not faulted. Move to Saved
                 {
-                    MoveFileToNewFolder(runContext.ProjectFilepath, runContext.SuccessFolderpath);
+                    MoveFileToNewFolder(runContext.ProcessingFilepath, runContext.SuccessFolderpath);
                 }
 
                 LogFlush();
@@ -203,11 +204,11 @@ namespace RunSimioSchedule2
         {
             try
             {
-                LogIt($"Info: Project saving to={runContext.ProjectFilepath}...");
-                SimioProjectFactory.SaveProject(runContext.SimioProject, runContext.ProjectFilepath, out string[] warnings);
+                LogIt($"Info: Project saving to={runContext.ProcessingFilepath}...");
+                SimioProjectFactory.SaveProject(runContext.SimioProject, runContext.ProcessingFilepath, out string[] warnings);
                 if (warnings?.Count() > 0)
                 {
-                    LogIt($"Warning: Project saved with {warnings?.Count()} warnings");
+                    LogIt($"Warning: Project saved to={runContext.SuccessFilepath} with {warnings?.Count()} warnings");
 
                     int ii = 0;
                     foreach (string warning in warnings)
@@ -215,12 +216,15 @@ namespace RunSimioSchedule2
                         LogIt($"   Warning {++ii}: {warning}");
                     }
                 }
+                else
+                {
+                    LogIt($"Info: Project Saved to={runContext.ProcessingFilepath}");
+                }
 
-                LogIt($"Info: Project Saved.");
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"SavingProject={runContext.ProjectFilepath}. Err={ex.Message}");
+                throw new ApplicationException($"SavingProject={runContext.ProcessingFilepath}. Err={ex.Message}");
             }
         }
 
