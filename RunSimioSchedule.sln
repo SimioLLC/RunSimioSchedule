@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunSimioSchedule", "Source\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunSimioSchedule2", "Source\RunSimioSchedule2\RunSimioSchedule2.csproj", "{C6AB4521-6D67-473D-A4F7-618224D4428D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunBarebones", "RunBarebones\RunBarebones.csproj", "{D0D19BB8-563D-4AAA-8630-97DAA3EBB6E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunBarebones", "Source\RunBarebones\RunBarebones.csproj", "{D0D19BB8-563D-4AAA-8630-97DAA3EBB6E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

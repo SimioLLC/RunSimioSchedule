@@ -33,7 +33,7 @@ namespace RunBarebones
             // This project is used to test various versions of Simio.
             // To do this, there is the "simioVersion" that corresponds to a folder on a temporary
             // path that holds our example projects included with that version.
-            // Note that this "version" should correspond to the SimioAPI and SimioDLL references that
+            // Note that this "version" should correspond to the SimioAPI and SimioDLL References/Dependencies that
             // the project is built with (see the Solution Explorer)
             string simioVersion = "245";
             string rootPath = $@"c:\temp\SimioProjects\{simioVersion}\";
@@ -43,8 +43,7 @@ namespace RunBarebones
             string extensionsFolderpath = Path.Combine(programFiles, "Simio LLC", $"Simio {simioVersion}", "UserExtensions");
             SimioProjectFactory.SetExtensionsPath(extensionsFolderpath);
 
-            //string projectName = "HospitalEmergencyDepartment";
-            string projectName = "API Model2";
+            string projectName = "HospitalEmergencyDepartment";
             string loadPath = Path.Combine(rootPath, $"{projectName}.spfx");
             if ( !File.Exists(loadPath) ) 
             {
