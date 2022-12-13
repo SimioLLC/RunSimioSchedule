@@ -38,11 +38,13 @@ namespace RunBarebones
             string simioVersion = "245";
             string rootPath = $@"c:\temp\SimioProjects\{simioVersion}\";
 
-            //========== Do an Experiment ===============
+            //========== Set the UserExtensions for the ProjectFactory ===============
             string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            string extensionsFolderpath = Path.Combine(programFiles, "Simio LLC", $"Simio {simioVersion}", "UserExtensions");
+            string extensionsFolderpath = Path.Combine(programFiles, "Simio LLC", $"Simio", "UserExtensions");
+            Logit($"Info: Setting UserExtension path to={extensionsFolderpath}");
             SimioProjectFactory.SetExtensionsPath(extensionsFolderpath);
 
+            //========== Do an Experiment ===============
             string projectName = "HospitalEmergencyDepartment";
             string loadPath = Path.Combine(rootPath, $"{projectName}.spfx");
             if ( !File.Exists(loadPath) ) 
@@ -107,7 +109,7 @@ namespace RunBarebones
             }
             Logit($"Info: Project (with Experiment) saved to={savePath}.");
 
-            //========== Now do a Plan ===============
+            //========== Now do a Plan. UserExtensionsPath is already set. ===============
 
             projectName = "SchedulingDiscretePartProduction";
             loadPath = Path.Combine(rootPath, $"{projectName}.spfx");
@@ -117,11 +119,7 @@ namespace RunBarebones
                 Environment.Exit(-1);
             }
 
-            programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            extensionsFolderpath = Path.Combine(programFiles, "Simio LLC", $"Simio {simioVersion}", "UserExtensions"); 
-            SimioProjectFactory.SetExtensionsPath(extensionsFolderpath);
-
-            Logit($"Info: Project={loadPath} exists.");
+            Logit($"Info: Project={loadPath} exists. Loading...");
             ISimioProject projectPlan = SimioProjectFactory.LoadProject(loadPath, out loadWarnings);
             if (loadWarnings?.Length > 0)
             {
@@ -176,6 +174,7 @@ namespace RunBarebones
             }
             Logit($"Info: Project (with Plan) saved to={savePath}.");
 
+            Logit($"Run Complete. Hit ENTER to exit.");
             Console.ReadLine();
 
         } // main
