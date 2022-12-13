@@ -51,7 +51,7 @@ namespace RunBarebones
                 Environment.Exit(-1);
             }
 
-            Logit($"Info: Project={loadPath} exists.");
+            Logit($"Info: Project={loadPath} exists. Loading...");
             ISimioProject projectExperiment = SimioProjectFactory.LoadProject(loadPath, out string[] loadWarnings);
             if (loadWarnings?.Length > 0)
             {
@@ -176,6 +176,7 @@ namespace RunBarebones
             }
             Logit($"Info: Project (with Plan) saved to={savePath}.");
 
+            Console.ReadLine();
 
         } // main
 
