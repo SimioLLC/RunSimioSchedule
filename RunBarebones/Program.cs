@@ -43,7 +43,8 @@ namespace RunBarebones
             string extensionsFolderpath = Path.Combine(programFiles, "Simio LLC", $"Simio {simioVersion}", "UserExtensions");
             SimioProjectFactory.SetExtensionsPath(extensionsFolderpath);
 
-            string projectName = "HospitalEmergencyDepartment";
+            //string projectName = "HospitalEmergencyDepartment";
+            string projectName = "API Model2";
             string loadPath = Path.Combine(rootPath, $"{projectName}.spfx");
             if ( !File.Exists(loadPath) ) 
             {
