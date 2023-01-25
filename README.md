@@ -1,6 +1,8 @@
 # RunSimioSchedule
 This Github contains examples that show how to run Simio Projects in "Headless" mode using the SimioEngine API.
 
+This has been tested with Simio Version=15.245 using x64 bit configuration of Visual Studio 2022 Community Edition.
+
 In summary, there are three examples, two of which using file-drop techniques to initiate the Simio Engine running a Simio project (a .spfx file).
 The first example (RunSimioSchedule) has the Simio project loaded at startup, and it is run any time an updated file with scheduling "events" (such as downtime) is dropped into the IN folder.
 The second example (RunSimioSchedule2) instead watches the IN folder for a Simio project file (anything with a .SPFX extension). This project is loaded and then an Experiment or Plan is run according to the Settings.

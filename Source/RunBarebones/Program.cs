@@ -113,6 +113,7 @@ namespace RunBarebones
             Logit($"Info: Project (with Experiment) saved to={savePath}.");
 
             //========== Now do a Plan ===============
+
             projectName = "SchedulingDiscretePartProduction";
             loadPath = Path.Combine(rootPath, $"{projectName}.spfx");
             if (!File.Exists(loadPath))
@@ -121,7 +122,7 @@ namespace RunBarebones
                 Environment.Exit(-1);
             }
 
-            Logit($"Info: Project={loadPath} exists.");
+            Logit($"Info: Project={loadPath} exists. Loading...");
             ISimioProject projectPlan = SimioProjectFactory.LoadProject(loadPath, out loadWarnings);
             if (loadWarnings?.Length > 0)
             {
