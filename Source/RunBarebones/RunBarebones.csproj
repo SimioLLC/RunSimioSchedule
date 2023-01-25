@@ -34,13 +34,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="SimioAPI, Version=15.247.29584.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SimioAPI, Version=15.249.30426.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Simio LLC\Simio 245\SimioAPI.dll</HintPath>
+      <HintPath>C:\Program Files\Simio LLC\Simio 248\SimioAPI.dll</HintPath>
     </Reference>
-    <Reference Include="SimioDLL, Version=15.247.29584.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SimioDLL, Version=15.249.30426.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Simio LLC\Simio 245\SimioDLL.dll</HintPath>
+      <HintPath>C:\Program Files\Simio LLC\Simio 248\SimioDLL.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +49,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3">
+      <Version>2.1.4</Version>
+    </PackageReference>
+    <PackageReference Include="System.Resources.Extensions">
+      <Version>6.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

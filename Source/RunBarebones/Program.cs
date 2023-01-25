@@ -35,14 +35,19 @@ namespace RunBarebones
             // path that holds our example projects included with that version.
             // Note that this "version" should correspond to the SimioAPI and SimioDLL References/Dependencies that
             // the project is built with (see the Solution Explorer)
-            string simioVersion = "245";
-            string rootPath = $@"c:\temp\SimioProjects\{simioVersion}\";
+            string simioProjectsSubfolder= "248";
+            string simioRuntimeSubfolder = "Simio"; // If you keep multiple versions around, this could be something like 'Simio 248'
 
-            //========== Do an Experiment ===============
+            // Where to look for example Simio projects
+            string rootPath = $@"c:\temp\SimioProjects\{simioProjectsSubfolder}\";
+
+            //========== Common items (e.g. setting up ExtensionsFolderpath) ===============
             string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            string extensionsFolderpath = Path.Combine(programFiles, "Simio LLC", $"Simio {simioVersion}", "UserExtensions");
+            string extensionsFolderpath = Path.Combine(programFiles, "Simio LLC", $"{simioRuntimeSubfolder}", "UserExtensions");
+            Logit($"Info: Setting (User) Extensions path to={extensionsFolderpath}");
             SimioProjectFactory.SetExtensionsPath(extensionsFolderpath);
 
+            //========== Do an Experiment ===============
             string projectName = "HospitalEmergencyDepartment";
             string loadPath = Path.Combine(rootPath, $"{projectName}.spfx");
             if ( !File.Exists(loadPath) ) 
@@ -108,7 +113,6 @@ namespace RunBarebones
             Logit($"Info: Project (with Experiment) saved to={savePath}.");
 
             //========== Now do a Plan ===============
-
             projectName = "SchedulingDiscretePartProduction";
             loadPath = Path.Combine(rootPath, $"{projectName}.spfx");
             if (!File.Exists(loadPath))
@@ -116,10 +120,6 @@ namespace RunBarebones
                 Logit($"Project={loadPath} does not exist. Exiting...");
                 Environment.Exit(-1);
             }
-
-            programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            extensionsFolderpath = Path.Combine(programFiles, "Simio LLC", $"Simio {simioVersion}", "UserExtensions"); 
-            SimioProjectFactory.SetExtensionsPath(extensionsFolderpath);
 
             Logit($"Info: Project={loadPath} exists.");
             ISimioProject projectPlan = SimioProjectFactory.LoadProject(loadPath, out loadWarnings);
@@ -176,6 +176,7 @@ namespace RunBarebones
             }
             Logit($"Info: Project (with Plan) saved to={savePath}.");
 
+            Logit($"Run completed. Press ENTER to exit.");
             Console.ReadLine();
 
         } // main
