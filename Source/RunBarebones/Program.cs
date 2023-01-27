@@ -35,7 +35,7 @@ namespace RunBarebones
             // path that holds our example projects included with that version.
             // Note that this "version" should correspond to the SimioAPI and SimioDLL References/Dependencies that
             // the project is built with (see the Solution Explorer)
-            string simioProjectsSubfolder= "248";
+            string simioProjectsSubfolder= "249";
             string simioRuntimeSubfolder = "Simio"; // If you keep multiple versions around, this could be something like 'Simio 248'
 
             // Where to look for example Simio projects
