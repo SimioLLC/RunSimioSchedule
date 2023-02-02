@@ -79,6 +79,27 @@ namespace RunBarebones
                 {
                     try
                     {
+
+                        experiment.ScenarioStarted += (s, e) =>
+                        {
+                            Logit($"Info:   Started Scenarion={e.Scenario.Name}");
+                        };
+                        experiment.ScenarioEnded += (s, e) =>
+                        {
+                            Logit($"Info:   Ended Scenarion={e.Scenario.Name}");
+                        };
+
+                        experiment.ReplicationStarted += (s, e) =>
+                        {
+                            Logit($"Info:   Started Replication={e.ReplicationNumber} (Scenario={e.Scenario.Name})");
+
+                        };
+                        experiment.ReplicationEnded += (s, e) =>
+                        {
+                            Logit($"Info:   Ended Replication={e.ReplicationNumber} (Scenario={e.Scenario.Name})");
+
+                        };
+
                         Logit($"Info: Experiment={experiment.Name} resetting..");
                         experiment.Reset();
                         Logit($"Info: Experiment={experiment.Name} starting run...");
