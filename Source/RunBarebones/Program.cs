@@ -97,7 +97,10 @@ namespace RunBarebones
                         experiment.ReplicationEnded += (s, e) =>
                         {
                             Logit($"Info:   Ended Replication={e.ReplicationNumber} (Scenario={e.Scenario.Name})");
-
+                            if (e.ReplicationEndedState != ExperimentationStatus.Completed )
+                            {
+                                throw new ApplicationException($"Replication ended. State={e.ReplicationEndedState}");
+                            }
                         };
 
                         Logit($"Info: Experiment={experiment.Name} resetting..");
@@ -170,7 +173,7 @@ namespace RunBarebones
                         RunPlanOptions runOptions = new RunPlanOptions();
                         runOptions.AllowDesignErrors = false;
                         plan.RunPlan(runOptions);
-                        Logit($"Info: Plan finished run.");
+                        Logit($"Info: Plan finished run. {plan}.");
                     }
                     catch (Exception ex)
                     {
