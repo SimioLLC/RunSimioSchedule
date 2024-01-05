@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace RunSimioSchedule2
+namespace RunSimioScheduleOrExperiment
 {
     /// <summary>
     /// Everything needed for Running a Schedule headless.

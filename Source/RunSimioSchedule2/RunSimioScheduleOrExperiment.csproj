@@ -7,8 +7,8 @@
     <ProjectGuid>{C6AB4521-6D67-473D-A4F7-618224D4428D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RunSimioSchedule2</RootNamespace>
-    <AssemblyName>RunSimioSchedule2</AssemblyName>
+    <RootNamespace>RunSimioScheduleScheduleOrExperiment</RootNamespace>
+    <AssemblyName>RunSimioScheduleOrExperiment</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunSimioSchedule", "Source\RunSimioSchedule\RunSimioSchedule.csproj", "{E9B68C5F-E0C5-4849-95E4-4825E0090D67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunSimioSchedule2", "Source\RunSimioSchedule2\RunSimioSchedule2.csproj", "{C6AB4521-6D67-473D-A4F7-618224D4428D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunSimioScheduleOrExperiment", "Source\RunSimioSchedule2\RunSimioScheduleOrExperiment.csproj", "{C6AB4521-6D67-473D-A4F7-618224D4428D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunBarebones", "Source\RunBarebones\RunBarebones.csproj", "{D0D19BB8-563D-4AAA-8630-97DAA3EBB6E6}"
 EndProject

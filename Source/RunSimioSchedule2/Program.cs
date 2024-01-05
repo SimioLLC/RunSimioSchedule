@@ -4,7 +4,7 @@ using System.ServiceProcess;
 using System.Timers;
 
 
-namespace RunSimioSchedule2
+namespace RunSimioScheduleOrExperiment
 {
     class Program : ServiceBase
     {
