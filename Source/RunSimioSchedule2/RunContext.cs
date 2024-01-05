@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace RunSimioScheduleOrExperiment
+namespace RunSimioModel
 {
     /// <summary>
     /// Everything needed for Running a Schedule headless.
@@ -125,7 +125,7 @@ namespace RunSimioScheduleOrExperiment
         /// Underneath the root, we have:
         /// /In - the folder being watched for .spfx files
         /// /Processing - where the project is placed upon receipt and run from
-        /// /Saved - where the saved project goes after running
+        /// /Success - where the saved project goes after successful running
         /// /Error - where the project file goes if there are errors.
         /// A status file is written directly under the root folder
         /// The model name is the model that is run (from the settings file).

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RunSimioSchedule
+namespace RunSimioModelObjects
 {
 
     /// <summary>
@@ -44,15 +44,15 @@ namespace RunSimioSchedule
         /// </summary>
         public string ExtensionsPath { get; private set; }
 
-        public bool DeleteStatusBeforeRun { get; set; }
+        public bool ShouldDeleteStatusBeforeRun { get; set; }
 
-        public bool SaveProject { get; set; }
+        public bool ShouldSaveProject { get; set; }
 
-        public bool RunPlan { get; set; } = true;
+        public bool ShouldRunPlan { get; set; } = true;
 
-        public bool RunRiskAnalysis { get; set; } = false;
+        public bool ShouldRunRiskAnalysis { get; set; } = false;
 
-        public bool ExportSchedule { get; set; } = false;
+        public bool ShouldExportSchedule { get; set; } = false;
 
 
         /// <summary>
@@ -122,10 +122,10 @@ namespace RunSimioSchedule
 
         /// <summary>
         /// Look for the event file.
-        /// When found, run the model.
+        /// When model is found, then conditionally: import downtime, run plan, run riskAnalysis, run the model plan, run riskAnalysis, export schedule
         /// </summary>
         /// <param name="modelName"></param>
-        public static void RunScheduleExportResultsAndSaveProject(RunContext runContext)
+        public static void RunPlanExportResultsAndSaveProject(RunContext runContext)
         {
 
             string marker = "Begin";
@@ -153,7 +153,7 @@ namespace RunSimioSchedule
                 else
                 {
                     // Delete Status
-                    if (runContext.DeleteStatusBeforeRun)
+                    if (runContext.ShouldDeleteStatusBeforeRun)
                     {
                         LogIt(marker = $"Deleting Status before Run.");
                         DeleteStatus(runContext);
@@ -164,7 +164,7 @@ namespace RunSimioSchedule
                         LogIt(marker = "Reading Resource Exceptions");
                         ImportDowntime(model, exceptionsTable);
                         // Save Projects
-                        if (runContext.SaveProject)
+                        if (runContext.ShouldSaveProject)
                         {
                             LogIt(marker = "Saving Project Prior To Run Plan");
                             SaveProject(runContext);
@@ -172,8 +172,8 @@ namespace RunSimioSchedule
                     }
 
                     // Start Plan
-                    LogIt(marker = $"Run Plan?={runContext.RunPlan}");
-                    if (runContext.RunPlan)
+                    LogIt(marker = $"Run Plan?={runContext.ShouldRunPlan}");
+                    if (runContext.ShouldRunPlan)
                     {
                         RunPlanOptions options = new RunPlanOptions 
                         {
@@ -183,14 +183,14 @@ namespace RunSimioSchedule
                         model.Plan.RunPlan(options);
                     }
 
-                    LogIt(marker = $"Run Risk Analysis?={runContext.RunRiskAnalysis}");
-                    if (runContext.RunRiskAnalysis)
+                    LogIt(marker = $"Run Risk Analysis?={runContext.ShouldRunRiskAnalysis}");
+                    if (runContext.ShouldRunRiskAnalysis)
                     {
                         model.Plan.RunRiskAnalysis();
                     }
 
-                    LogIt(marker = $"Export Schedule?={runContext.ExportSchedule}");
-                    if ( runContext.ExportSchedule)
+                    LogIt(marker = $"Export Schedule?={runContext.ShouldExportSchedule}");
+                    if ( runContext.ShouldExportSchedule)
                     {
                         LogIt(marker = $"Analyze Risk Finished...Exporting Schedule={runContext.ExportScheduleFilepath}");
                         ExportSchedule(model, runContext.ExportScheduleFilepath);
@@ -198,7 +198,7 @@ namespace RunSimioSchedule
 
                     LogIt(marker = "Actions Complete. Optional Save...");
                     // Save Projects
-                    if (runContext.SaveProject)
+                    if (runContext.ShouldSaveProject)
                     {
                         LogIt(marker = "Saving Project After Schedule Run");
                         SaveProject(runContext);
@@ -419,7 +419,7 @@ namespace RunSimioSchedule
         }
 
         /// <summary>
-        /// Convert the Resource Usage log 
+        /// Convert the Resource Usage log and Target results into a datatable
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -503,7 +503,7 @@ namespace RunSimioSchedule
 
         /// <summary>
         /// Convert a Simio Table to a Microsoft DataTable.
-        /// Note: this is not used in this project but is left here as a reference.
+        /// Note: although this is not used in this project, it is left here as a reference.
         /// </summary>
         /// <param name="table"></param>
         /// <returns></returns>

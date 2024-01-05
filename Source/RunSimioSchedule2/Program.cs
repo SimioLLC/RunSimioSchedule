@@ -4,7 +4,7 @@ using System.ServiceProcess;
 using System.Timers;
 
 
-namespace RunSimioScheduleOrExperiment
+namespace RunSimioModel
 {
     class Program : ServiceBase
     {
@@ -163,7 +163,7 @@ namespace RunSimioScheduleOrExperiment
                     try
                     {
                         // Run the schedule plan/experiment
-                        HeadlessHelpers.RunScheduleAndSaveProject(RContext, incomingFilepath);
+                        HeadlessHelpers.RunModelAndSaveProject(RContext, incomingFilepath);
                     }
                     catch (Exception ex)
                     {

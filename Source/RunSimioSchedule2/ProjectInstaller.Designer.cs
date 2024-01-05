@@ -1,4 +1,4 @@
-﻿namespace RunSimioScheduleOrExperiment
+﻿namespace RunSimioModel
 {
     partial class ProjectInstaller2
     {

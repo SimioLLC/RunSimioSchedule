@@ -12,7 +12,7 @@ using System.Configuration.Install;
 using SimioAPI;
 using System.Timers;
 
-namespace RunSimioSchedule
+namespace RunSimioModelObjects
 {
     class Program : ServiceBase
     {
@@ -56,11 +56,11 @@ namespace RunSimioSchedule
             LogIt($"Project={projectPath}");
             LogIt($"ExtensionsPath={RContext.ExtensionsPath}");
 
-            RContext.DeleteStatusBeforeRun = Properties.Settings.Default.DeleteStatusBeforeEachRun;
-            RContext.SaveProject = Properties.Settings.Default.SaveProject;
-            RContext.RunPlan = Properties.Settings.Default.RunPlan;
-            RContext.RunRiskAnalysis = Properties.Settings.Default.RunRiskAnalysis;
-            RContext.ExportSchedule = Properties.Settings.Default.ExportSchedule;
+            RContext.ShouldDeleteStatusBeforeRun = Properties.Settings.Default.DeleteStatusBeforeEachRun;
+            RContext.ShouldSaveProject = Properties.Settings.Default.SaveProject;
+            RContext.ShouldRunPlan = Properties.Settings.Default.RunPlan;
+            RContext.ShouldRunRiskAnalysis = Properties.Settings.Default.RunRiskAnalysis;
+            RContext.ShouldExportSchedule = Properties.Settings.Default.ExportSchedule;
 
             if (!Environment.UserInteractive)
             {
@@ -161,7 +161,7 @@ namespace RunSimioSchedule
 
                     try
                     {
-                        HeadlessHelpers.RunScheduleExportResultsAndSaveProject(RContext);
+                        HeadlessHelpers.RunPlanExportResultsAndSaveProject(RContext);
                     }
                     catch (Exception ex)
                     {

@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RunSimioSchedule.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RunSimioModelObjects.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="EventFile" Type="System.String" Scope="User">
@@ -36,7 +36,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="RootFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">c:\\temp\\RunSimioScheduleTest</Value>
+      <Value Profile="(Default)">c:\\temp\\RunSimioModelObjectsTest</Value>
     </Setting>
     <Setting Name="SaveThisStuff" Type="System.String" Scope="User">
       <Value Profile="(Default)">SchedulingDiscretePartProductionWithOnRunEndingExport.spfx</Value>

@@ -5,7 +5,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 
-namespace RunSimioScheduleOrExperiment
+namespace RunSimioModel
 {
 
 
@@ -21,7 +21,7 @@ namespace RunSimioScheduleOrExperiment
         /// Then use booleans to determine what to run.
         /// </summary>
         /// <param name="modelName"></param>
-        public static bool RunScheduleAndSaveProject(RunContext runContext, string incomingFilepath)
+        public static bool RunModelAndSaveProject(RunContext runContext, string incomingFilepath)
         {
 
             string marker = "Begin";

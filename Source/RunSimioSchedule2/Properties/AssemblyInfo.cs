@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RunSimioScheduleOrExperiment")]
+[assembly: AssemblyTitle("RunSimioModel")]
 [assembly: AssemblyDescription("Run model and save, according to properties")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RunSimioScheduleOrExperiment")]
+[assembly: AssemblyProduct("RunSimioModel")]
 [assembly: AssemblyCopyright("Copyright © 2015-2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
