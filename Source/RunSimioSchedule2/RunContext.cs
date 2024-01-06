@@ -161,7 +161,26 @@ namespace RunSimioModel
                     throw new ApplicationException($"Status Folder={statusFolderpath} not found.");
 
                 if (!Directory.Exists(WatcherFolderpath))
-                    throw new ApplicationException($"Watcher folder={WatcherFolderpath} not found.");
+                {
+                    Directory.CreateDirectory(WatcherFolderpath);
+                    Logit($"Folder={WatcherFolderpath} Created.");
+                }
+
+                if (!Directory.Exists(SuccessFolderpath))
+                {
+                    Directory.CreateDirectory(SuccessFolderpath);
+                    Logit($"Folder={SuccessFolderpath} Created.");
+                }
+                if (!Directory.Exists(ErrorFolderpath))
+                {
+                    Directory.CreateDirectory(ErrorFolderpath);
+                    Logit($"Folder={ErrorFolderpath} Created.");
+                }
+                if (!Directory.Exists(ProcessingFolderpath))
+                {
+                    Directory.CreateDirectory(ProcessingFolderpath);
+                    Logit($"Folder={ProcessingFolderpath} Created.");
+                }
 
                 marker = $"RunContext Watching={WatcherFolderpath} with Filter-{WatcherFolderpath} Status to={StatusFilepath} Model={ModelName}";
 
@@ -173,7 +192,7 @@ namespace RunSimioModel
                 }
 
                 marker = $"Setting ExtensionPath to={ExtensionsFolderpath}";
-                //SimioProjectFactory.SetExtensionsPath(ExtensionsFolderpath);
+                SimioProjectFactory.SetExtensionsPath(ExtensionsFolderpath);
 
             }
             catch (Exception ex)

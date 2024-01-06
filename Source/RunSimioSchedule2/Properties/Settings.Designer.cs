@@ -25,7 +25,7 @@ namespace RunSimioModel.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\temp\\RunScheduleOrExperimentTest")]
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\temp\\RunSimioModelTest")]
         public string RootFolderpath {
             get {
                 return ((string)(this["RootFolderpath"]));
@@ -37,7 +37,7 @@ namespace RunSimioModel.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\temp\\RunScheduleOrExperimentTest\\Status.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\temp\\RunSimioModelTest\\Status.txt")]
         public string StatusFilepath {
             get {
                 return ((string)(this["StatusFilepath"]));

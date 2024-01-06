@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="RootFolderpath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">c:\temp\RunScheduleOrExperimentTest</Value>
+      <Value Profile="(Default)">c:\temp\RunSimioModelTest</Value>
     </Setting>
     <Setting Name="StatusFilepath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">c:\temp\RunScheduleOrExperimentTest\Status.txt</Value>
+      <Value Profile="(Default)">c:\temp\RunSimioModelTest\Status.txt</Value>
     </Setting>
     <Setting Name="ModelName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Model</Value>

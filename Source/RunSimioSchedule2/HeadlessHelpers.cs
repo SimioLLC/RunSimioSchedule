@@ -35,7 +35,7 @@ namespace RunSimioModel
 
                 HeadlessHelpers.MoveFileToNewFolder( incomingFilepath, runContext.ProcessingFolderpath);
 
-                bool isFaulted = true; // default
+                bool isFaulted = false; //default
 
                 // Open project file and pay attention to any warnings.
                 runContext.SimioProject = SimioProjectFactory.LoadProject(runContext.ProcessingFilepath, out string[] warnings);
@@ -74,28 +74,31 @@ namespace RunSimioModel
                             }
 
                             // Start Plan
-                            LogIt(marker = $"Run Plan? ({runContext.IsPlanToBeRun})");
-                            if (runContext.IsPlanToBeRun)
+                            if (model.Plan != null)
                             {
-                                RunPlanOptions options = new RunPlanOptions
+                                LogIt(marker = $"Run Plan? ({runContext.IsPlanToBeRun})");
+                                if (runContext.IsPlanToBeRun )
                                 {
-                                    AllowDesignErrors = false
-                                };
+                                    RunPlanOptions options = new RunPlanOptions
+                                    {
+                                        AllowDesignErrors = false
+                                    };
 
-                                LogIt(marker = "Running Plan...");
-                                model.Plan.RunPlan(options);
+                                    LogIt(marker = "Running Plan...");
+                                    model.Plan.RunPlan(options);
+                                }
+
+                                LogIt(marker = $"Run Completed. Optional Risk Analysis ({runContext.IsRiskAnalysisToBeRun})");
+                                if (runContext.IsRiskAnalysisToBeRun)
+                                {
+                                    LogIt(marker = "Running Risk Analysis...");
+                                    model.Plan.RunRiskAnalysis();
+                                }
+
+                                LogIt(marker = "Run Plan completed.");
+                                isFaulted = false;
                             }
-
-                            LogIt(marker = $"Run Completed. Optional Risk Analysis ({runContext.IsRiskAnalysisToBeRun})");
-                            if (runContext.IsRiskAnalysisToBeRun)
-                            {
-                                LogIt(marker = "Running Risk Analysis...");
-                                model.Plan.RunRiskAnalysis();
-                            }
-
-                            LogIt(marker = "Run Plan completed.");
-                            isFaulted = false;
-
+                        
                             // Also look for experiments
                             LogIt(marker = $"Run Experiment? ({runContext.IsExperimentToBeRun})");
                             if (runContext.IsExperimentToBeRun && !isFaulted)
@@ -139,7 +142,7 @@ namespace RunSimioModel
                     }
                     catch (Exception ex)
                     {
-                        LogIt($"Project={runContext.ProcessingFilepath}. Marker={marker}. Error={ex.Message}");
+                        LogIt($"Project={runContext.ProcessingFilepath}. Marker={marker}. Error={ex.Message} Stack={ex.StackTrace}");
                     }
 
                 } // load was ok
