@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RunSimioModel.Properties {
+namespace RunBarebones.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,25 +25,37 @@ namespace RunSimioModel.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\temp\\RunScheduleOrExperimentTest")]
-        public string RootFolderpath {
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\Program Files\\Simio LLC\\Simio249")]
+        public string RootPath {
             get {
-                return ((string)(this["RootFolderpath"]));
+                return ((string)(this["RootPath"]));
             }
             set {
-                this["RootFolderpath"] = value;
+                this["RootPath"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\temp\\RunScheduleOrExperimentTest\\Status.txt")]
-        public string StatusFilepath {
+        [global::System.Configuration.DefaultSettingValueAttribute("Simio")]
+        public string SimioSubFolder {
             get {
-                return ((string)(this["StatusFilepath"]));
+                return ((string)(this["SimioSubFolder"]));
             }
             set {
-                this["StatusFilepath"] = value;
+                this["SimioSubFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HospitalEmergencyDepartment.spfx")]
+        public string ProjectFilename {
+            get {
+                return ((string)(this["ProjectFilename"]));
+            }
+            set {
+                this["ProjectFilename"] = value;
             }
         }
         
@@ -56,54 +68,6 @@ namespace RunSimioModel.Properties {
             }
             set {
                 this["ModelName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsPlanToBeRun {
-            get {
-                return ((bool)(this["IsPlanToBeRun"]));
-            }
-            set {
-                this["IsPlanToBeRun"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsRiskAnalysisToBeRun {
-            get {
-                return ((bool)(this["IsRiskAnalysisToBeRun"]));
-            }
-            set {
-                this["IsRiskAnalysisToBeRun"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsProjectToBeSaved {
-            get {
-                return ((bool)(this["IsProjectToBeSaved"]));
-            }
-            set {
-                this["IsProjectToBeSaved"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsExperimentToBeRun {
-            get {
-                return ((bool)(this["IsExperimentToBeRun"]));
-            }
-            set {
-                this["IsExperimentToBeRun"] = value;
             }
         }
         

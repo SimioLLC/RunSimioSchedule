@@ -35,24 +35,28 @@ namespace RunBarebones
             // path that holds our example projects included with that version.
             // Note that this "version" should correspond to the SimioAPI and SimioDLL References/Dependencies that
             // the project is built with (see the Solution Explorer)
-            string simioProjectsSubfolder= "249";
-            string simioRuntimeSubfolder = "Simio"; // If you keep multiple versions around, this could be something like 'Simio 248'
+            string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+
+            string simioSubfolder = Properties.Settings.Default.SimioSubFolder; // If you keep multiple versions around, this could be something like 'Simio 248'
 
             // Where to look for example Simio projects
-            string rootPath = $@"c:\temp\SimioProjects\{simioProjectsSubfolder}\";
+            string rootPath = Path.Combine(programFiles, "Simio LLC", simioSubfolder);  
+            Logit($"Info: RootPath={rootPath}");
+
+            Logit($"Info: Simio Subfolder={simioSubfolder}");
 
             //========== Common items (e.g. setting up ExtensionsFolderpath) ===============
-            string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            string extensionsFolderpath = Path.Combine(programFiles, "Simio LLC", $"{simioRuntimeSubfolder}", "UserExtensions");
+            string extensionsFolderpath = Path.Combine( rootPath, "UserExtensions");
             Logit($"Info: Setting (User) Extensions path to={extensionsFolderpath}");
             SimioProjectFactory.SetExtensionsPath(extensionsFolderpath);
 
             //========== Do an Experiment ===============
             string projectName = "HospitalEmergencyDepartment";
-            string loadPath = Path.Combine(rootPath, $"{projectName}.spfx");
+            string loadPath = Path.Combine(rootPath, "Examples", $"{projectName}.spfx");
             if ( !File.Exists(loadPath) ) 
             {
-                Logit($"Project Path={loadPath} does not exist. Exiting...");
+                Alert($"Project Path={loadPath} does not exist. Exiting...");
                 Environment.Exit(-1);
             }
 
@@ -99,7 +103,7 @@ namespace RunBarebones
                             Logit($"Info:   Ended Replication={e.ReplicationNumber} (Scenario={e.Scenario.Name})");
                             if (e.ReplicationEndedState != ExperimentationStatus.Completed )
                             {
-                                throw new ApplicationException($"Replication ended. State={e.ReplicationEndedState}");
+                                Logit($"Warning: Replication ended. State={e.ReplicationEndedState} Message={e.ErrorMessage}");
                             }
                         };
 
@@ -147,18 +151,18 @@ namespace RunBarebones
             }
 
             Logit($"Info: Project={loadPath} exists. Loading...");
-            ISimioProject projectPlan = SimioProjectFactory.LoadProject(loadPath, out loadWarnings);
-            if (loadWarnings?.Length > 0)
+            ISimioProject projectWithPlan = SimioProjectFactory.LoadProject(loadPath, out string[] loadWarnings2);
+            if (loadWarnings2?.Length > 0)
             {
                 int count = 0;
-                foreach (var warning in loadWarnings)
+                foreach (var warning in loadWarnings2)
                 {
                     Logit($"Warning: Load Warning #{++count}={warning}");
                 }
             }
 
             modelName = "Model";
-            model = projectPlan.Models[modelName];
+            model = projectWithPlan.Models[modelName];
 
             if (model != null)
             {
@@ -190,7 +194,7 @@ namespace RunBarebones
 
             savePath = Path.Combine(rootPath, $"{projectName}-Saved.spfx");
             Logit($"Info: Saving project to={savePath}...");
-            SimioProjectFactory.SaveProject(projectPlan, savePath, out saveWarnings);
+            SimioProjectFactory.SaveProject(projectWithPlan, savePath, out saveWarnings);
             if (saveWarnings?.Length > 0)
             {
                 int count = 0;
@@ -214,6 +218,11 @@ namespace RunBarebones
         private static void Logit(string messsage)
         {
             Console.WriteLine($"{DateTime.Now:HH:mm:ss.fff}: {messsage}");
+        }
+        private static void Alert(string messsage)
+        {
+            Console.WriteLine($"{DateTime.Now:HH:mm:ss.fff}: {messsage}");
+            string _ = Console.ReadLine();
         }
     } // class Program
 }

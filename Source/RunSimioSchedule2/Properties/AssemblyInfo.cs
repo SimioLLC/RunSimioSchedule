@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("RunSimioModel")]
-[assembly: AssemblyDescription("Run model and save, according to properties")]
+[assembly: AssemblyDescription("Run model")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("RunSimioModel")]

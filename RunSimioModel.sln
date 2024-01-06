@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunSimioPlan", "Source\RunSimioSchedule\RunSimioPlan.csproj", "{E9B68C5F-E0C5-4849-95E4-4825E0090D67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunSimioModelObjects", "Source\RunSimioSchedule\RunSimioModelObjects.csproj", "{E9B68C5F-E0C5-4849-95E4-4825E0090D67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunSimioModel", "Source\RunSimioSchedule2\RunSimioModel.csproj", "{C6AB4521-6D67-473D-A4F7-618224D4428D}"
 EndProject

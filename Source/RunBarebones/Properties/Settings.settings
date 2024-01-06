@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RunBarebones.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RootPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\Program Files\Simio LLC\Simio249</Value>
+    </Setting>
+    <Setting Name="SimioSubFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Simio</Value>
+    </Setting>
+    <Setting Name="ProjectFilename" Type="System.String" Scope="User">
+      <Value Profile="(Default)">HospitalEmergencyDepartment.spfx</Value>
+    </Setting>
+    <Setting Name="ModelName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Model</Value>
+    </Setting>
+    <Setting Name="ExperimentName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Experiment1</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

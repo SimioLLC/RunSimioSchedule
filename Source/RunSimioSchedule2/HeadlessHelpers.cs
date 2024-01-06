@@ -239,7 +239,9 @@ namespace RunSimioModel
         {
             try
             {
-                using (StreamWriter file = new StreamWriter(Properties.Settings.Default.StatusFilepath, append))
+                using (StreamWriter file = new StreamWriter(
+                    Properties.Settings.Default.StatusFilepath,
+                    append : true))
                 {
                     string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd (MMM) HH:mm:ss");
                     msg = $"{timestamp}: {msg}";
@@ -258,7 +260,7 @@ namespace RunSimioModel
 
         public static void LogFlush()
         {
-            using (StreamWriter file = new StreamWriter(Properties.Settings.Default.StatusFilepath, true))
+            using (StreamWriter file = new StreamWriter(Properties.Settings.Default.StatusFilepath, append: true))
             {
                 file.Flush();
             }
