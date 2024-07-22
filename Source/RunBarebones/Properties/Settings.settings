@@ -2,20 +2,26 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RunBarebones.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="RootPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">c:\Program Files\Simio LLC\Simio249</Value>
+    <Setting Name="SimioDesktopPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\Program Files\Simio LLC\Simio</Value>
     </Setting>
-    <Setting Name="SimioSubFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Simio</Value>
-    </Setting>
-    <Setting Name="ProjectFilename" Type="System.String" Scope="User">
+    <Setting Name="ExperimentProjectFilename" Type="System.String" Scope="User">
       <Value Profile="(Default)">HospitalEmergencyDepartment.spfx</Value>
     </Setting>
-    <Setting Name="ModelName" Type="System.String" Scope="User">
+    <Setting Name="ExperimentModelName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Model</Value>
     </Setting>
-    <Setting Name="ExperimentName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Experiment1</Value>
+    <Setting Name="PlanProjectFilename" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SchedulingDiscretePartProduction.spfx</Value>
+    </Setting>
+    <Setting Name="WorkPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\temp</Value>
+    </Setting>
+    <Setting Name="PlanModelName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Model</Value>
+    </Setting>
+    <Setting Name="SaveWithSourceControlSupport" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

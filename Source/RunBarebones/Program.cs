@@ -1,4 +1,5 @@
-﻿using SimioAPI;
+﻿using RunBarebones.Properties;
+using SimioAPI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,32 +39,51 @@ namespace RunBarebones
             string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
             string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 
-            string simioSubfolder = Properties.Settings.Default.SimioSubFolder; // If you keep multiple versions around, this could be something like 'Simio 248'
+            // Determine whether to save Project with Source Control
+            bool saveWithSourceControlSupport = Settings.Default.SaveWithSourceControlSupport;
 
-            // Where to look for example Simio projects
-            string rootPath = Path.Combine(programFiles, "Simio LLC", simioSubfolder);  
-            Logit($"Info: RootPath={rootPath}");
+            //==== Do some checks to make sure root folders are present ====
+            string workPath = Settings.Default.WorkPath;
+            if (!Directory.Exists(workPath))
+            {
+                AlertAndExit($"Cannot locate WorkPath={workPath}");
+            }
 
-            Logit($"Info: Simio Subfolder={simioSubfolder}");
+            string simioPath = Settings.Default.SimioDesktopPath;
+            if (!Directory.Exists(simioPath))
+            {
+                AlertAndExit($"Simio desktop path is not located. Path Setting={simioPath}");
+            }
+
+
+            Logit($"Info: Simio Installed at Root={simioPath}.");
 
             //========== Common items (e.g. setting up ExtensionsFolderpath) ===============
-            string extensionsFolderpath = Path.Combine( rootPath, "UserExtensions");
+            string projectPath = Path.Combine(workPath, Settings.Default.ExperimentProjectFilename);
+            if (!File.Exists(projectPath))
+            {
+                AlertAndExit($"Cannot locate Experiment Project Path={projectPath}. Model Name (from Settings)={Settings.Default.ExperimentModelName}");
+            }
+
+            string projectName = Path.GetFileNameWithoutExtension(projectPath);
+
+            //========== Common items (e.g. setting up ExtensionsFolderpath) ===============
+            string extensionsFolderpath = Path.Combine( simioPath, "UserExtensions");
+            if (!Directory.Exists(extensionsFolderpath))
+            {
+                AlertAndExit($"Cannot location Extensions Path={extensionsFolderpath}");
+            }
+
             Logit($"Info: Setting (User) Extensions path to={extensionsFolderpath}");
             SimioProjectFactory.SetExtensionsPath(extensionsFolderpath);
 
             //========== Do an Experiment ===============
-            string projectName = "HospitalEmergencyDepartment";
-            string loadPath = Path.Combine(rootPath, "Examples", $"{projectName}.spfx");
-            if ( !File.Exists(loadPath) ) 
-            {
-                Alert($"Project Path={loadPath} does not exist. Exiting...");
-                Environment.Exit(-1);
-            }
-
-            Logit($"Info: Project={loadPath} exists. Loading...");
-            ISimioProject projectExperiment = SimioProjectFactory.LoadProject(loadPath, out string[] loadWarnings);
+            Logit($"Info: Project={projectPath} exists. Loading...");
+            ISimioProject projectExperiment = SimioProjectFactory.LoadProject(projectPath, out string[] loadWarnings);
             if (loadWarnings?.Length > 0)
             {
+                Logit($"Found {loadWarnings?.Length} Warnings while loading={projectPath}");
+
                 int count = 0;
                 foreach (var warning in loadWarnings)
                 {
@@ -71,16 +91,23 @@ namespace RunBarebones
                 }
             }
 
-            string modelName = "Model";
+            string modelName = Settings.Default.ExperimentModelName;
+            Logit($"Info: From Settings: model={modelName}.");
             IModel model = projectExperiment.Models[modelName];
 
             if ( model != null )
             {
+                if ( !model.Experiments.Any() ) 
+                {
+                    AlertAndExit($"Model={model.Name} had no Experiments.");
+                    goto DoPlan;
+                }
                 Logit($"Info: Located model={modelName}. Using the first Experiment.");
 
                 IExperiment experiment = model.Experiments[0]; // get the first experiment
                 if (experiment != null)
                 {
+                    Logit($"Executing First Experiment. Name={experiment.Name}");
                     try
                     {
 
@@ -123,12 +150,13 @@ namespace RunBarebones
             }
             else
             {
-                Logit($"Could not located model={modelName}");
+                Logit($"Could not locate model={modelName}");
             }
 
-
-            string savePath = Path.Combine(rootPath, $"{projectName}-Saved.spfx");
+            string savePath = Path.Combine(workPath, $"{projectName}-Saved.spfx");
             Logit($"Info: Saving project to={savePath}...");
+            projectExperiment.SupportSourceControl = saveWithSourceControlSupport;
+
             SimioProjectFactory.SaveProject(projectExperiment, savePath, out string[] saveWarnings);
             if ( saveWarnings?.Length > 0)
             {
@@ -141,19 +169,21 @@ namespace RunBarebones
             Logit($"Info: Project (with Experiment) saved to={savePath}.");
 
             //========== Now do a Plan ===============
+            DoPlan:
 
-            projectName = "SchedulingDiscretePartProduction";
-            loadPath = Path.Combine(rootPath, $"{projectName}.spfx");
-            if (!File.Exists(loadPath))
+            projectPath = Path.Combine(workPath, Settings.Default.PlanProjectFilename);
+            if (!File.Exists(projectPath))
             {
-                Logit($"Project={loadPath} does not exist. Exiting...");
-                Environment.Exit(-1);
+                AlertAndExit($"Cannot locate Plan Project Path={projectPath}. Model Name (from Settings)={Settings.Default.ExperimentProjectFilename}");
             }
 
-            Logit($"Info: Project={loadPath} exists. Loading...");
-            ISimioProject projectWithPlan = SimioProjectFactory.LoadProject(loadPath, out string[] loadWarnings2);
+            projectName = Path.GetFileNameWithoutExtension(projectPath);
+
+            Logit($"Info: Project Path={projectPath} exists. ProjectName={projectName} Loading...");
+            ISimioProject projectWithPlan = SimioProjectFactory.LoadProject(projectPath, out string[] loadWarnings2);
             if (loadWarnings2?.Length > 0)
             {
+                Logit($"Found {loadWarnings?.Length} Warnings while loading={projectPath}");
                 int count = 0;
                 foreach (var warning in loadWarnings2)
                 {
@@ -161,12 +191,12 @@ namespace RunBarebones
                 }
             }
 
-            modelName = "Model";
+            modelName = Settings.Default.PlanModelName;
             model = projectWithPlan.Models[modelName];
 
             if (model != null)
             {
-                Logit($"Info: Located model={modelName}. Using the first Experiment.");
+                Logit($"Info: Project={projectName} Plan: Located model={modelName}. ");
 
                 IPlan plan = model.Plan; // get the plan
                 if (plan != null)
@@ -177,7 +207,18 @@ namespace RunBarebones
                         RunPlanOptions runOptions = new RunPlanOptions();
                         runOptions.AllowDesignErrors = false;
                         plan.RunPlan(runOptions);
-                        Logit($"Info: Plan finished run. {plan}.");
+                        Logit($"Info: Plan finished run. {plan.TargetResults}.");
+
+                        ITargetResults results = plan.TargetResults;
+                        if (results != null) 
+                        {
+                            Logit($" There are {results.Count} results:");
+                            int resultCount = 0;
+                            foreach (var result in results)
+                            {
+                                Logit($"  {resultCount++}. TargetName={result.Target.Name} PlanValue={result.PlanValue}");
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -192,7 +233,8 @@ namespace RunBarebones
                 Logit($"Could not locate model={modelName}");
             }
 
-            savePath = Path.Combine(rootPath, $"{projectName}-Saved.spfx");
+            savePath = Path.Combine(workPath, $"{projectName}-Saved.spfx");
+            projectWithPlan.SupportSourceControl = saveWithSourceControlSupport;
             Logit($"Info: Saving project to={savePath}...");
             SimioProjectFactory.SaveProject(projectWithPlan, savePath, out saveWarnings);
             if (saveWarnings?.Length > 0)
@@ -209,6 +251,17 @@ namespace RunBarebones
             Console.ReadLine();
 
         } // main
+
+        /// <summary>
+        /// Put message and exit app
+        /// </summary>
+        /// <param name="messsage"></param>
+        /// <returns></returns>
+        private static void AlertAndExit(string messsage)
+        {
+            Console.Write($"{DateTime.Now:HH:mm:ss.fff}: {messsage}");
+            Environment.Exit(-1);
+        }
 
         /// <summary>
         /// Put out to console with timestamp

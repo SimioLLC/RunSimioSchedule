@@ -34,13 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="SimioAPI, Version=15.249.30426.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Simio LLC\Simio 248\SimioAPI.dll</HintPath>
+    <Reference Include="SimioAPI">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Simio LLC\Simio\SimioAPI.dll</HintPath>
     </Reference>
-    <Reference Include="SimioDLL, Version=15.249.30426.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Simio LLC\Simio 248\SimioDLL.dll</HintPath>
+    <Reference Include="SimioDLL">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Simio LLC\Simio\SimioDLL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>

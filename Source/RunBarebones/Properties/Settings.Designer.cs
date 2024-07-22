@@ -12,7 +12,7 @@ namespace RunBarebones.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,61 +25,85 @@ namespace RunBarebones.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\Program Files\\Simio LLC\\Simio249")]
-        public string RootPath {
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\Program Files\\Simio LLC\\Simio")]
+        public string SimioDesktopPath {
             get {
-                return ((string)(this["RootPath"]));
+                return ((string)(this["SimioDesktopPath"]));
             }
             set {
-                this["RootPath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Simio")]
-        public string SimioSubFolder {
-            get {
-                return ((string)(this["SimioSubFolder"]));
-            }
-            set {
-                this["SimioSubFolder"] = value;
+                this["SimioDesktopPath"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("HospitalEmergencyDepartment.spfx")]
-        public string ProjectFilename {
+        public string ExperimentProjectFilename {
             get {
-                return ((string)(this["ProjectFilename"]));
+                return ((string)(this["ExperimentProjectFilename"]));
             }
             set {
-                this["ProjectFilename"] = value;
+                this["ExperimentProjectFilename"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Model")]
-        public string ModelName {
+        public string ExperimentModelName {
             get {
-                return ((string)(this["ModelName"]));
+                return ((string)(this["ExperimentModelName"]));
             }
             set {
-                this["ModelName"] = value;
+                this["ExperimentModelName"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Experiment1")]
-        public string ExperimentName {
+        [global::System.Configuration.DefaultSettingValueAttribute("SchedulingDiscretePartProduction.spfx")]
+        public string PlanProjectFilename {
             get {
-                return ((string)(this["ExperimentName"]));
+                return ((string)(this["PlanProjectFilename"]));
             }
             set {
-                this["ExperimentName"] = value;
+                this["PlanProjectFilename"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\temp")]
+        public string WorkPath {
+            get {
+                return ((string)(this["WorkPath"]));
+            }
+            set {
+                this["WorkPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Model")]
+        public string PlanModelName {
+            get {
+                return ((string)(this["PlanModelName"]));
+            }
+            set {
+                this["PlanModelName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SaveWithSourceControlSupport {
+            get {
+                return ((bool)(this["SaveWithSourceControlSupport"]));
+            }
+            set {
+                this["SaveWithSourceControlSupport"] = value;
             }
         }
     }
