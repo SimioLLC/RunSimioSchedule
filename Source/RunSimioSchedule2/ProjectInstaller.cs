@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel;
-using System.Configuration.Install;
 using System.ServiceProcess;
 
 namespace RunSimioModel
 {
     [RunInstaller(true)]
-    public partial class ProjectInstaller2 : Installer
+    public partial class ProjectInstaller2 : System.Configuration.Install.Installer
     {
         private ServiceProcessInstaller process;
         private ServiceInstaller service;

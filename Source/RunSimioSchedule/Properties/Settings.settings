@@ -18,7 +18,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="SimioProjectFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">SchedulingTest1.spfx</Value>
+      <Value Profile="(Default)">SchedulingDiscretePartProductionWithOnRunEndingExport.spfx</Value>
     </Setting>
     <Setting Name="ExportScheduleFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">ExportSchedule.xml</Value>

@@ -1,7 +1,7 @@
 # RunSimioSchedule
 This Github contains examples that show how to run Simio Projects in "Headless" mode using the SimioEngine API.
 
-This has been tested with Simio Versions up to 15.249 using x64 bit configuration of Visual Studio 2022 Community Edition.
+Simio releases v18.272 and up are now built on .NET Core. This project was updated to .NET Core v9 from .NET Framework v4.7.2. To upgrade your project from .NET Framework to .NET Core, Simio has found this VS 2022 extension useful -> https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.upgradeassistant
 
 <b>Note: Versions past 15.245 require additional references to Sqlite as Sqlite is now embedded within Simio. These are best done with NuGet references. For an example, examine the BareBones References.</b>
 
@@ -18,4 +18,3 @@ Under the Source folder are the three projects, and under each of these is a Con
 Note that these code samples reference the Simio Engine from where it is installed for the desktop version: e.g. c:\program files\Simio LLC\simio. If you wish to run it elsewhere, you need to move the DLLs, including all of their dependencies and the licensing DLLs.
 
 Look to the Documentation folder that contains more detailed information.
-
